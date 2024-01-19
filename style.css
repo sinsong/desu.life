@@ -1,0 +1,456 @@
+*,
+*::before,
+*::after {
+  /* 不来这么一下我前端等于没学 */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* 虽然不知道有什么用，但是先放一点变量在这里。 */
+  --breakpoint-sm:   576px;
+  --breakpoint-md:   768px;
+  --breakpoint-lg:   992px;
+  --breakpoint-xl:  1200px;
+  --breakpoint-xxl: 1400px;
+}
+
+:root {
+  background-color: #000;
+  
+  font-family: sans-serif;
+  font-size: 18px;
+  font-synthesis: none;
+  /* 谢谢 Vue 社区 */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: #6495ed; /* 矢车菊蓝 */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1,
+h2,
+p,
+li {
+  color: #fff;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+@media screen and (max-width: 768px) {
+  /* 太大了，会溢出的 */
+  /* 点名批评 Firefox 溢出提示瞎指挥 */
+  /* Firefox 我的 Firefox，你也要对我声东击西吗？ */
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* 我一直在后悔这么写，发生的问题真尼玛多 */
+p:not(:last-child),
+ul:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+ul > li {
+  margin-left: 1.5rem;
+}
+
+ul > li:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+/* header */
+
+nav {
+  position: absolute;
+  top: 20vh;
+
+  width: 100%;
+  /* 无他，唯 relative 定位 overleap 而 */
+  /* 我指的是后面的头像 */
+  z-index: 1;
+}
+
+nav.fixed {
+  position: fixed;
+  top: 0.75rem;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  width: max-content;
+  margin: 0 auto;
+  padding: 0 1rem;
+  list-style: none;
+
+  background: rgba(0, 0, 0, .75);
+  border-radius: 8px;
+}
+
+nav ul > li {
+  font-size: 1rem;
+  margin: 0 !important; /* 呵，报应。（发出依莱凡斯的声音） */
+  padding: 0.5rem 0.5rem;
+}
+
+nav .sep {
+  /* 你觉得难看吗？我也觉得难看 */
+  background-color: #fff;
+  width: 2px;
+  height: 1.5rem;
+  margin: 0 0.5rem;
+  align-self: center;
+}
+
+@media screen and (max-width: 768px) {
+  /* 移动端相当于重写了 */
+
+  nav,
+  nav.fixed {
+    position: fixed;
+    top: 0;
+
+    overflow-x: auto;
+  }
+
+  nav ul {
+    width: 100%;
+    justify-content: start;
+    border-radius: 0;
+  }
+
+  nav ul > li {
+    flex-shrink: 0;
+  }
+
+  nav .sep {
+    width: 0;
+    height: 0;
+    margin-right: auto;
+  }
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color ease .15s;
+}
+
+nav a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* section */
+
+.slide {
+  height: 100vh;
+  padding: 6rem 15px;
+}
+
+#heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 你知道一个背景图片能给人多大的伤害吗？ */
+  /* background: url("static/52259221868_b757d6cdea_k.jpg"); */
+  background: url("https://desu.life/random_image/?viewType=h");
+  /* 一个图片可能太小，以至于被重复，甚至露出鸡脚 */
+  /* 所以让图片不重复，覆盖，居中 */
+  background-repeat: no-repeat no-repeat;
+  background-size: cover;
+  background-position: center center;
+  /* 不重要的“固定”效果 */
+  background-attachment: fixed;
+}
+
+@media screen and (max-aspect-ratio: 1.2 / 1) {
+  /* 太棒了，我逐渐理解一切 */
+  #heading {
+    background: url("https://desu.life/random_image/?viewType=s");
+  }
+}
+
+@media screen and (max-aspect-ratio: 1 / 1.2) {
+  #heading {
+    background: url("https://desu.life/random_image/?viewType=v");
+  }
+}
+
+/* feature */
+
+.feature {
+  padding: 5rem 0;
+}
+
+.feature-item {
+  /* 感谢 blender 的馈赠 */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+
+  margin: 0 auto;
+  max-width: 992px;
+}
+
+.feature-item:not(:last-child) {
+  margin-bottom: 25vh;
+}
+
+@media screen and (max-width: 992px) {
+  .feature-item {
+    /* blender 官网也不过如此 */
+    max-width: 576px;
+  }
+}
+
+.feature-item.reverse {
+  /* 今天我就要超越 blender */
+  flex-direction: row-reverse;
+}
+
+@media screen and (max-width: 992px) {
+  .feature-item {
+    display: block;
+  }
+}
+
+.feature-item > * {
+  /* 感谢 blender 的馈赠 */
+  flex: 1;
+  padding: 1rem;
+}
+
+.feature-item > img {
+  display: block;
+  width: 100%;
+}
+
+@media screen and (max-width: 992px) {
+  /* 调移动端是痛苦的 */
+  .feature-item > img {
+    margin: 0 auto;
+    width: 75vw;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .feature-item > img {
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+/* features-inline */
+ul.features-inline {
+  display: flex;
+  list-style: none;
+  margin: 2rem 0;
+}
+
+ul.features-inline li {
+  margin: 0; /* 呵，报应。 */
+}
+
+ul.features-inline li:not(:last-child) {
+  margin: 0 2rem 0 0; /* 呵，报应 */
+}
+
+ul.features-inline li > svg {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  margin: 0.5rem auto;
+}
+
+ul.features-inline li > p {
+  font-size: 0.8rem;
+}
+
+/* discord */
+
+#discord {
+  /* 感谢 discord 的馈赠 */
+  background-color: #2b2d31;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.discord-box {
+  width: 480px;
+  padding: 32px;
+  font-size: 18px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .75);
+  border-radius: 5px;
+  background-color: #313338;
+}
+
+.discord-box .container img {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+}
+
+.discord-box .container .text-normal {
+  margin-bottom: 0.5em;
+  text-align: center;
+  color: rgb(181, 186, 193);
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.discord-box .container .text-heading {
+  text-align: center;
+  color: rgb(242, 243, 245);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.discord-box > button {
+  /* 一个 button 破事贼多 */
+  appearance: none;
+  display: block;
+  border: none;
+
+  width: 100%;
+  height: 44px;
+  margin-top: 40px;
+  padding: 2px 16px;
+
+  background-color: rgb(88, 101, 242);
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+
+  cursor: pointer;
+
+  transition: background-color 170ms ease;
+}
+
+.discord-box button:hover {
+  background-color: rgb(71, 82, 196);
+}
+
+/* about */
+
+#about {
+  height: unset !important;
+  display: grid;
+  margin: 5rem 0;
+  
+  /* 感谢 grid garden 的馈赠 */
+  /* 看到这里的你，对，就是你，快！启动！ */
+  /* https://cssgridgarden.com/ */
+  grid-template-columns: repeat(6, 1fr);
+  padding: 0 200px;
+}
+
+/* 你知道吗？这里就是我做这个页面的动力所在 */
+@media screen and (max-width: 1400px) {
+  #about {
+    grid-template-columns: repeat(5, 1fr);
+    padding: 0 100px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  #about {
+    grid-template-columns: repeat(5, 1fr);
+    padding: 0 50px;
+  }
+}
+@media screen and (max-width: 992px) {
+  #about {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0 50px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #about {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 50px;
+  }
+}
+@media screen and (max-width: 576px) {
+  #about {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 15px;
+  }
+}
+
+a.people-card {
+  display: block;
+  background-color: #3c3c3c;
+  border-radius: 10px;
+  /* 加入一点魔法 */
+  position: relative;
+  margin: calc(32px + 15px) 15px 15px;
+  padding: 0 15px 30px;
+}
+
+a.people-card:hover {
+  text-decoration: none; /* 呵，报应。 */
+}
+
+a.people-card img.avatar {
+  display: block;
+  /* 说实话今天以前我都不会这玩意 */
+  position: relative;
+  top: -32px;
+  margin: 0 auto;
+
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+a.people-card p.name {
+  font-size: 1rem;
+  color: #fff;
+  text-align: center;
+  /* 感谢 CSS 3 的馈赠 */
+  margin-top: calc(-32px + 15px);
+  margin-bottom: 0.2rem;
+}
+
+a.people-card p.comment {
+  font-size: 0.7rem;
+  color: #aaa;
+  text-align: center;
+}
+
+/* footer */
+
+footer > p {
+  /* 就这么写得了，别在乎你的 :not(:last-child) 了 */
+  color: #ccc;
+  text-align: center;
+  /* 因为懒得写 footer 的 margin 和 footer > p:not(:last-child) 的 margin-bottom */
+  margin-bottom: 0.25rem !important; /* 呵，报应。 */
+}

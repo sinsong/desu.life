@@ -1,0 +1,59 @@
+/* 复制粘贴一下就行了 */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color: #ccc;
+  background-color: #000;
+  
+  font-family: sans-serif;
+  font-size: 18px;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media screen and (max-width: 760px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+body {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 2rem 15px;
+}
+
+a {
+  color: #6495ed;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin-bottom: 0.3rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  padding-bottom: 0.2rem;
+  /* 你说是不是画蛇添足了 */
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 0.8rem;
+}
